@@ -121,11 +121,18 @@ function Order() {
 function Item() {
   return (
     <div>
-      <img src="/image-baklava-desktop.jpg" alt="a baklava"></img>
-      <button className="flex">
-        <img src="/icon-add-to-cart.svg" alt="a cart"></img>
-        <span>Add to cart</span>
-      </button>
+      <div className="border-red border-solid border-[1px]">
+        <img src="/image-baklava-mobile.jpg" srcSet=" /image-baklava-mobile.jpg 500w, /image-baklava-tablet.jpg 1000w, /image-baklava-desktop.jpg 1500w" alt="a baklava"></img>
+        <button className="flex gap-4 bg-white p-[12px] justify-center items-center rounded-full">
+          <img src="/icon-add-to-cart.svg" alt="a cart"></img>
+          <span>Add to cart</span>
+        </button>
+      </div>
+      <div>
+        <p className="text-rose-500">Waffles</p>
+        <p>Waffle with Berries</p>
+        <p>$6.50</p>
+      </div>
     </div>
   );
 }
