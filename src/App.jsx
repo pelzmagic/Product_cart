@@ -130,7 +130,7 @@ function Item() {
       </div>
       <div>
         <p className="text-rose-500">Waffles</p>
-        <p>Waffle with Berries</p>
+        <p>Waffle with</p>
         <p>$6.50</p>
       </div>
     </div>
