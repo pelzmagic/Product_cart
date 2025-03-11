@@ -103,7 +103,7 @@ console.log(data);
 
 function App() {
   return (
-    <div>
+    <div className="border border-r-emerald-800 py-[88px] px-[112px]">
       <Order />
     </div>
   );
@@ -120,15 +120,23 @@ function Order() {
 
 function Item() {
   return (
-    <div>
-      <div className="border-red border-solid border-[1px]">
-        <img src="/image-baklava-mobile.jpg" srcSet=" /image-baklava-mobile.jpg 500w, /image-baklava-tablet.jpg 1000w, /image-baklava-desktop.jpg 1500w" alt="a baklava"></img>
-        <button className="flex gap-4 bg-white p-[12px] justify-center items-center rounded-full">
+    <div className="border border-yellow-700 w-[250px] flex flex-col gap-4">
+      <div className="border border-red w-full h-[262px] relative">
+        <img
+          className="w-full rounded-lg"
+          src="/image-creme-brulee-desktop.jpg"
+          srcSet=" /image-creme-brulee-mobile.jpg 500w, /image-creme-brulee-tablet.jpg 1000w, /image-creme-brulee-desktop.jpg 1500w"
+          sizes="(max-width: 640px) 100vw,
+                 (max-width: 1024px) 50vw,
+                 33vw"
+          alt="a waffle"
+        />
+        <button className="flex gap-2 bg-white p-[12px] justify-center items-center rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 border border-rose-400">
           <img src="/icon-add-to-cart.svg" alt="a cart"></img>
-          <span>Add to cart</span>
+          <span className="text-[14px] leading-[150%] text-rose-900">Add to cart</span>
         </button>
       </div>
-      <div>
+      <div className="border border-green">
         <p className="text-rose-500">Waffles</p>
         <p>Waffle with</p>
         <p>$6.50</p>
