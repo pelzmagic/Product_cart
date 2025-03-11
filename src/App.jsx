@@ -131,14 +131,14 @@ function Item() {
                  33vw"
           alt="a waffle"
         />
-        <button className="flex gap-2 bg-white p-[12px] justify-center items-center rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 border border-rose-400">
+        <button className="flex gap-2 bg-white w-[160px] h-[44px] justify-center items-center rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 border border-rose-400">
           <img src="/icon-add-to-cart.svg" alt="a cart"></img>
           <span className="text-[14px] leading-[150%] text-rose-900">Add to cart</span>
         </button>
       </div>
       <div className="border border-green">
-        <p className="text-rose-500">Waffles</p>
-        <p>Waffle with</p>
+        <p className="text-rose-500 text-[14px] leading-[150%]">Waffles</p>
+        <p>Waffle with Berries</p>
         <p>$6.50</p>
       </div>
     </div>
