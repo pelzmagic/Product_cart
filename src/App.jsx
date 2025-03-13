@@ -105,7 +105,7 @@ console.log(data);
 
 function App() {
   return (
-    <div className="border border-r-emerald-800 py-[88px] px-[112px]">
+    <div className="border border-r-emerald-800 py-[88px] px-[112px] max-w-[1440px] mx-auto">
       <Order />
     </div>
   );
@@ -113,14 +113,17 @@ function App() {
 
 function Order() {
   return (
-    <div className="border-red border-solid border-[1px] space-y-8">
-      <div>
+    <div className="border-red border-solid border-[1px] flex gap-8 max-w-[1216px]">
+      <div className="border border-red w-[66%] space-y-8">
         <p className="font-body text-rose-900 text-xl font-bold leading-[120%]">Desserts</p>
-        <div className="max-w-[800px] border border-blue-950 grid grid-cols-3 grid-rows-3 gap-x-6 gap-y-8">
+        <div className="border border-blue-950 grid grid-cols-3 grid-rows-3 gap-x-6 gap-y-8">
           {data.map((data) => (
             <Item key={data.category} data={data} />
           ))}
         </div>
+      </div>
+      <div className="border border-black w-[34%]">
+        <Cart />
       </div>
     </div>
   );
@@ -141,7 +144,7 @@ Item.propTypes = {
 
 function Item({ data }) {
   return (
-    <div className="border border-yellow-700 w-[250px] flex flex-col gap-4">
+    <div className="border border-yellow-700 max-w-[250px] flex flex-col gap-4">
       <div className="border border-red w-full h-[262px] relative">
         <img
           className="w-full rounded-lg"
@@ -161,6 +164,18 @@ function Item({ data }) {
         <p className="text-rose-500 text-[14px] leading-[150%]">{data.category}</p>
         <p className="text-base leading-[150%] text-rose-900 font-semibold">{data.name}</p>
         <p className="text-base leading-[150%] text-red font-semibold">{`$${data.price.toFixed(2)}`}</p>
+      </div>
+    </div>
+  );
+}
+
+function Cart() {
+  return (
+    <div className="border border-red p-6 bg-white rounded-xl space-y-6">
+      <p className="text-red text-2xl leading-[125%] font-bold">Your Cart(0)</p>
+      <div className="border border-black flex flex-col items-center justify-center">
+        <img src="/Empty Illustration.svg" alt="empty illustration" />
+        <p className="text-rose-500 text-xsm text-center font-semibold leading-[150%]">Your added items will appear here</p>
       </div>
     </div>
   );
