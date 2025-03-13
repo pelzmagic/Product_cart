@@ -114,11 +114,13 @@ function App() {
 function Order() {
   return (
     <div className="border-red border-solid border-[1px] space-y-8">
-      <p className="font-body text-rose-900 text-xl font-bold leading-[120%]">Desserts</p>
       <div>
-        {data.map((data) => (
-          <Item key={data.category} data={data} />
-        ))}
+        <p className="font-body text-rose-900 text-xl font-bold leading-[120%]">Desserts</p>
+        <div className="max-w-[800px] border border-blue-950 grid grid-cols-3 grid-rows-3 gap-x-6 gap-y-8">
+          {data.map((data) => (
+            <Item key={data.category} data={data} />
+          ))}
+        </div>
       </div>
     </div>
   );
