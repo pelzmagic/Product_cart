@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const data = [
   {
@@ -143,11 +144,30 @@ Item.propTypes = {
 };
 
 function Item({ data }) {
+  const [isClicked, setIsClicked] = useState(false);
+  const [count, setCount] = useState(1);
+
+  const handleClick = function () {
+    setIsClicked(true);
+  };
+
+  const addItem = function () {
+    setCount((count) => count + 1);
+  };
+  const subtractItem = function () {
+    setCount((prevCount) => {
+      const newCount = prevCount - 1;
+      if (newCount === 0) {
+        setIsClicked(false);
+      }
+      return newCount;
+    });
+  };
   return (
-    <div className="border border-yellow-700 max-w-[250px] flex flex-col gap-4">
-      <div className="border border-red w-full h-[262px] relative">
+    <div className="flex flex-col gap-8">
+      <div className="relative">
         <img
-          className="w-full rounded-lg"
+          className={`w-full rounded-lg h-auto ${isClicked ? "border-2 border-red" : "border-0"}`}
           src={data.image.desktop}
           srcSet={`${data.image.mobile} 500w, ${data.image.tablet} 1000w, ${data.image.desktop} 1500w`}
           sizes="(max-width: 640px) 100vw,
@@ -155,9 +175,27 @@ function Item({ data }) {
                  33vw"
           alt={`a ${data.category}`}
         />
-        <button className="flex gap-2 bg-white w-[160px] h-[44px] justify-center items-center rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 border border-rose-400">
-          <img src="/icon-add-to-cart.svg" alt="a cart"></img>
-          <span className="text-[14px] leading-[150%] text-rose-900">Add to cart</span>
+        <button
+          className={`flex gap-2 w-full max-w-[160px] ${isClicked ? "bg-red" : "bg-white"} p-3 justify-center items-center rounded-full absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 ${
+            isClicked ? "border-0" : "border border-rose-400"
+          }`}
+          onClick={handleClick}>
+          {isClicked ? (
+            <div className="flex border border-red justify-between w-full">
+              <div>
+                <img src="/subtract.png" alt="subtract icon" onClick={subtractItem} />
+              </div>
+              <p className="text-white">{count}</p>
+              <div>
+                <img src="/addition.png" alt="addition icon" onClick={addItem} />
+              </div>
+            </div>
+          ) : (
+            <>
+              <img src="/icon-add-to-cart.svg" alt="a cart"></img>
+              <span className="text-[14px] leading-[150%] text-rose-900">Add to cart</span>
+            </>
+          )}
         </button>
       </div>
       <div className="space-y-1">
