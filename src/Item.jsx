@@ -20,6 +20,7 @@ export default function Item({ data }) {
 
   const handleClick = function () {
     setIsClicked(true);
+    setCount((prevCount) => (prevCount === 0 ? 1 : prevCount));
   };
 
   const addItem = function () {
