@@ -15,8 +15,8 @@ Item.propTypes = {
 };
 
 export default function Item({ data }) {
-  const [isClicked, setIsClicked] = useState(false);
   const [count, setCount] = useState(1);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = function () {
     setIsClicked(true);
