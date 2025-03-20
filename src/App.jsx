@@ -1,6 +1,9 @@
 import Order from "./Order";
+import { useState } from "react";
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+  console.log(cartItems);
   const data = [
     {
       image: {
@@ -105,7 +108,7 @@ function App() {
 
   return (
     <div className="border border-r-emerald-800 py-[88px] px-[112px] max-w-[1440px] mx-auto">
-      <Order data={data} />
+      <Order data={data} cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );
 }

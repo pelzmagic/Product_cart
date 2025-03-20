@@ -19,19 +19,20 @@ Order.propTypes = {
   setIsClicked: PropTypes.func,
 };
 
-export default function Order({ data, isClicked, setIsClicked }) {
+// eslint-disable-next-line react/prop-types
+export default function Order({ data, cartItems, setCartItems }) {
   return (
     <div className="border-red border-solid border-[1px] flex gap-8 max-w-[1216px]">
       <div className="border border-red w-[66%] space-y-8">
         <p className="font-body text-rose-900 text-xl font-bold leading-[120%]">Desserts</p>
         <div className="border border-blue-950 grid grid-cols-3 grid-rows-3 gap-x-6 gap-y-8">
           {data.map((data) => (
-            <Item key={data.category} data={data} isClicked={isClicked} setIsClicked={setIsClicked} />
+            <Item key={data.category} data={data} cartItems={cartItems} setCartItems={setCartItems} />
           ))}
         </div>
       </div>
       <div className="border border-black w-[34%]">
-        <Cart data={data} isClicked={isClicked} />
+        <Cart cartItems={cartItems} setCartItems={setCartItems} />
       </div>
     </div>
   );

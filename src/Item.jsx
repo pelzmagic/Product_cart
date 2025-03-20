@@ -14,26 +14,33 @@ Item.propTypes = {
   }).isRequired,
 };
 
-export default function Item({ data }) {
-  const [count, setCount] = useState(1);
+// eslint-disable-next-line react/prop-types
+export default function Item({ data, setCartItems }) {
   const [isClicked, setIsClicked] = useState(false);
+  const [count, setCount] = useState(0);
 
   const handleClick = function () {
     setIsClicked(true);
-    setCount((prevCount) => (prevCount === 0 ? 1 : prevCount));
+    // setCount((prevCount) => (prevCount === 0 ? 1 : prevCount));
   };
 
   const addItem = function () {
-    setCount((count) => count + 1);
-  };
-  const subtractItem = function () {
-    setCount((prevCount) => {
-      const newCount = prevCount - 1;
-      if (newCount === 0) {
-        setIsClicked(false);
+    const newCount = count + 1;
+    setCount(newCount);
+    setCartItems((cartItems) => {
+      const existingItemIndex = cartItems.findIndex((item) => item.id === data.name);
+      if (existingItemIndex >= 0) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[existingItemIndex].quantity = newCount;
+        return updatedCartItems;
+      } else {
+        return [...cartItems, { id: data.name, item: data, quantity: newCount, name: data.name, price: data.price }];
       }
-      return newCount;
     });
+  };
+
+  const subtractItem = function () {
+    setCount((count) => count - 1);
   };
   return (
     <div className="flex flex-col gap-8">
@@ -54,12 +61,20 @@ export default function Item({ data }) {
           onClick={handleClick}>
           {isClicked ? (
             <div className="flex border border-red justify-between w-full">
-              <div>
-                <img src="/subtract.png" alt="subtract icon" onClick={subtractItem} />
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  subtractItem();
+                }}>
+                <img src="/subtract.png" alt="subtract icon" />
               </div>
               <p className="text-white">{count}</p>
-              <div>
-                <img src="/addition.png" alt="addition icon" onClick={addItem} />
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addItem();
+                }}>
+                <img src="/addition.png" alt="addition icon" />
               </div>
             </div>
           ) : (
