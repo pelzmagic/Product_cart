@@ -15,9 +15,8 @@ Item.propTypes = {
 };
 
 // eslint-disable-next-line react/prop-types
-export default function Item({ data, setCartItems }) {
+export default function Item({ data, setCartItems, count, setCount }) {
   const [isClicked, setIsClicked] = useState(false);
-  const [count, setCount] = useState(0);
 
   const handleClick = function () {
     setIsClicked(true);
@@ -40,8 +39,25 @@ export default function Item({ data, setCartItems }) {
   };
 
   const subtractItem = function () {
-    setCount((count) => count - 1);
+    if (count > 0) {
+      const newCount = count - 1;
+      setCount(newCount);
+      if (newCount === 0) setIsClicked(false);
+      setCartItems((cartItems) => {
+        const existingItemIndex = cartItems.findIndex((item) => item.id === data.name);
+        if (existingItemIndex >= 0) {
+          if (newCount === 0) {
+            return cartItems.filter((item) => item.id !== data.name);
+          }
+          const updatedCartItems = [...cartItems];
+          updatedCartItems[existingItemIndex].quantity = newCount;
+          return updatedCartItems;
+        }
+        return cartItems;
+      });
+    }
   };
+
   return (
     <div className="flex flex-col gap-8">
       <div className="relative">

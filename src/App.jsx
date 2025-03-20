@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [count, setCount] = useState(0);
   console.log(cartItems);
   const data = [
     {
@@ -108,7 +109,7 @@ function App() {
 
   return (
     <div className="border border-r-emerald-800 py-[88px] px-[112px] max-w-[1440px] mx-auto">
-      <Order data={data} cartItems={cartItems} setCartItems={setCartItems} />
+      <Order data={data} cartItems={cartItems} setCartItems={setCartItems} count={count} setCount={setCount} />
     </div>
   );
 }
