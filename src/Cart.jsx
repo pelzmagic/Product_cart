@@ -1,31 +1,38 @@
 import PropTypes from "prop-types";
 
 Cart.propTypes = {
-  data: PropTypes.arrayOf(
+  cartItems: PropTypes.arrayOf(
     PropTypes.shape({
-      price: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
       category: PropTypes.string.isRequired,
       image: PropTypes.shape({
         mobile: PropTypes.string.isRequired,
         desktop: PropTypes.string.isRequired,
         tablet: PropTypes.string.isRequired,
       }).isRequired,
+      quantity: PropTypes.number.isRequired,
     })
   ).isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 AddToCartItems.propTypes = {
-  data: PropTypes.shape({
-    price: PropTypes.number.isRequired,
+  cartItem: PropTypes.shape({
+    id: PropTypes.string.isRequired, // again, adjust type if needed
     name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     image: PropTypes.shape({
       mobile: PropTypes.string.isRequired,
       desktop: PropTypes.string.isRequired,
       tablet: PropTypes.string.isRequired,
     }).isRequired,
+    quantity: PropTypes.number.isRequired,
   }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default function Cart({ cartItems, setCartItems, count }) {

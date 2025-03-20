@@ -32,7 +32,7 @@ export default function Order({ data, cartItems, setCartItems, count, setCount }
         </div>
       </div>
       <div className="border border-black w-[34%]">
-        <Cart cartItems={cartItems} setCartItems={setCartItems} count={count} />
+        <Cart cartItems={cartItems} setCartItems={setCartItems} count={count} data={data} />
       </div>
     </div>
   );
