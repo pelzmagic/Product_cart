@@ -35,12 +35,24 @@ AddToCartItems.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default function Cart({ cartItems, setCartItems, count }) {
+export default function Cart({ cartItems, setCartItems }) {
   const deleteItem = function (id) {
     console.log(cartItems);
-    setCartItems((cartItems) => cartItems.filter((item) => item.id !== id));
+    setCartItems((cartItems) => {
+      const itemToUpdate = cartItems.find((item) => item.id === id);
+      if (!itemToUpdate) return cartItems;
+      if (itemToUpdate.quantity === 1) {
+        return cartItems.filter((item) => item.id !== id);
+      }
+      return cartItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+    });
   };
-  // console.log(cartItems);
+
   return (
     <>
       {cartItems.length === 0 ? (

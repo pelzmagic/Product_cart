@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 Item.propTypes = {
   data: PropTypes.shape({
@@ -12,10 +12,20 @@ Item.propTypes = {
       tablet: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+      item: PropTypes.object,
+    })
+  ).isRequired,
 };
 
-// eslint-disable-next-line react/prop-types
-export default function Item({ data, setCartItems, count, setCount }) {
+export default function Item({ data, setCartItems, cartItems }) {
+  const [count, setCount] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = function () {
@@ -57,6 +67,17 @@ export default function Item({ data, setCartItems, count, setCount }) {
       });
     }
   };
+
+  useEffect(
+    function () {
+      const itemsExistInCart = cartItems.some((item) => item.id === data.name);
+      if (!itemsExistInCart) {
+        setIsClicked(false);
+        setCount(0);
+      }
+    },
+    [cartItems, data.name]
+  );
 
   return (
     <div className="flex flex-col gap-8">
