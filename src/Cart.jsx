@@ -70,6 +70,10 @@ export default function Cart({ cartItems, setCartItems }) {
             {cartItems.map((cartItem) => (
               <AddToCartItems cartItem={cartItem} key={cartItem.id} onDelete={deleteItem} />
             ))}
+            <div>
+              <p className="text-rose-900 leading-[150%] text-xsm">Order Total</p>
+              <p className="text-rose-900 leading-[125%]">$46.50</p>
+            </div>
           </div>
         </div>
       )}
@@ -79,18 +83,21 @@ export default function Cart({ cartItems, setCartItems }) {
 
 function AddToCartItems({ cartItem, onDelete }) {
   return (
-    <div className="flex justify-between items-center">
-      <div className="space-y-2 border border-blue-500 w-1/2">
-        <p className="text-rose-900 text-xsm leading-[150%] font-semibold">{cartItem.name}</p>
-        <div className="w-full border border-red flex justify-between">
-          <p className="text-red text-xsm leading-[150%] font-semibold">{cartItem.quantity}x</p>
-          <p className="text-rose-500 leading-[150%] text-xsm">@${cartItem.price.toFixed(2)}</p>
-          <p className="text-rose-500 leading-[150%] font-semibold text-xsm">$5.50</p>
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <div className="space-y-2 border border-blue-500 w-1/2">
+          <p className="text-rose-900 text-xsm leading-[150%] font-semibold">{cartItem.name}</p>
+          <div className="w-full border border-red flex justify-between">
+            <p className="text-red text-xsm leading-[150%] font-semibold">{cartItem.quantity}x</p>
+            <p className="text-rose-500 leading-[150%] text-xsm">@${cartItem.price.toFixed(2)}</p>
+            <p className="text-rose-500 leading-[150%] font-semibold text-xsm">$5.50</p>
+          </div>
+        </div>
+        <div onClick={() => onDelete(cartItem.id)}>
+          <img src="/Button - Remove Item.png" alt="delete button" />
         </div>
       </div>
-      <div onClick={() => onDelete(cartItem.id)}>
-        <img src="/Button - Remove Item.png" alt="delete button" />
-      </div>
+      <hr className="border border-rose-100" />
     </div>
   );
 }
