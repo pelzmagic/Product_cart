@@ -70,10 +70,19 @@ export default function Cart({ cartItems, setCartItems }) {
             {cartItems.map((cartItem) => (
               <AddToCartItems cartItem={cartItem} key={cartItem.id} onDelete={deleteItem} />
             ))}
-            <div>
+            <div className="flex justify-between items-center mt-6">
               <p className="text-rose-900 leading-[150%] text-xsm">Order Total</p>
-              <p className="text-rose-900 leading-[125%]">$46.50</p>
+              <p className="text-rose-900 leading-[125%] text-2xl font-bold">$46.50</p>
             </div>
+            <div className="bg-rose-50 p-4 rounded-lg mt-6">
+              <div className="flex border border-red gap-2 w-[80%] mx-auto items-center">
+                <img src="/carbon.png" alt="carbon icon" />{" "}
+                <p className="text-rose-900 leading-[150%] text-xsm">
+                  This is a <span className="font-bold">carbon-neutral</span> delivery
+                </p>
+              </div>
+            </div>
+            <button className="bg-red w-full py-4 px-6 rounded-full text-white text-base leading-[150%] font-semibold mt-6">Confirm Order</button>
           </div>
         </div>
       )}

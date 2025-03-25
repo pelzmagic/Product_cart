@@ -1,5 +1,6 @@
 import Order from "./Order";
 import { useState } from "react";
+import Modal from "./modal";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -107,9 +108,12 @@ function App() {
   ];
 
   return (
-    <div className="border border-r-emerald-800 py-[88px] px-[112px] max-w-[1440px] mx-auto">
-      <Order data={data} cartItems={cartItems} setCartItems={setCartItems} />
-    </div>
+    <>
+      <div className="border border-r-emerald-800 py-[88px] px-[112px] max-w-[1440px] mx-auto">
+        <Order data={data} cartItems={cartItems} setCartItems={setCartItems} />
+      </div>
+      <Modal />
+    </>
   );
 }
 
