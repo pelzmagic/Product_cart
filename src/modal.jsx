@@ -22,7 +22,7 @@ function ModalItems() {
             <p className="text-rose-900 font-semibold text-xsm leading-[150%]">Classic Tiramisu</p>
             <div className="flex gap-3 items-center">
               <p className="text-red">1x</p>
-              <p className="text-rose-500 text-xsm leading-[150%]">@$5.50</p>
+              <p className="text-rose-500 text-xsm leading-[150%]">@$5.51</p>
             </div>
           </div>
         </div>
