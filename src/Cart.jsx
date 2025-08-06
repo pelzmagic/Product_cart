@@ -76,8 +76,8 @@ export default function Cart({ cartItems, setCartItems }) {
             </div>
             <div className="bg-rose-50 p-4 rounded-lg mt-6">
               <div className="flex border border-red gap-2 w-[80%] mx-auto items-center">
-                <img src="/carbon.png" alt="carbon icon" />{" "}
-                <p className="text-rose-900 leading-[150%] text-xsm">
+                <img src="/carbon.png" alt="carbon icon" />
+                <p className="text-rose-900 leading-[150%] text-sm">
                   This is a <span className="font-bold">carbon-neutral</span> delivery
                 </p>
               </div>

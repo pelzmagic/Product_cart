@@ -1,6 +1,6 @@
 import Order from "./Order";
 import { useState } from "react";
-import Modal from "./modal";
+import Modal from "./components/modal";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
