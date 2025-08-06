@@ -1,4 +1,4 @@
-import Cart from "./Cart";
+import Cart from "../Cart";
 import Item from "./Item";
 import PropTypes from "prop-types";
 

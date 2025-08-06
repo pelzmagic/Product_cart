@@ -1,4 +1,4 @@
-import Order from "./Order";
+import Order from "./components/Order";
 import { useState } from "react";
 import Modal from "./components/modal";
 
